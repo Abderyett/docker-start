@@ -21,3 +21,10 @@
 
   * ``` docker run -it <image> sh``` to start new container with shell as primary processs (webserver) and maybe attach to it runing shell ```exec command```
 
+
+  * ```docker build -t abderyett/imageName:latest .``` to tag an image instead of working with id when run the image (by convention  -t docker_id/project_name:version)
+
+
+  * ``` The ordr mater inde Dockerfile```
+
+   
