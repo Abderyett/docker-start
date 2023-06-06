@@ -9,6 +9,7 @@ WORKDIR /usr/app
 # and this avoid to run npm install in rebuild
 COPY ./package.json ./ 
 RUN npm install
+COPY ./ ./
 
 
 #Default command

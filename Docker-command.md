@@ -29,6 +29,6 @@
 
   * ```docker run -p <frontend_Port>:<backend_node_port> <image_name|ID> ```  in order o allow the incoming connection from the front end to specific port inside container 
 
-  *
+  
 
    
