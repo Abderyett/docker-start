@@ -29,6 +29,8 @@
 
   * ```docker run -p <frontend_Port>:<backend_node_port> <image_name|ID> ```  in order o allow the incoming connection from the front end to specific port inside container 
 
+
+  * We use docker compose to setup connection between contqiners and skipping typing long command in docker CLI
   
 
    
