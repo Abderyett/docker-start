@@ -4,28 +4,23 @@ const app = express();
 
 const redisClient = redis.createClient({
 	legacyMode: true,
-	host: 'redisClient',
-	port: 6379,
 });
 
 redisClient
 	.connect()
-	.then(async (res) => {
+	.then((res) => {
 		console.log('connected');
 	})
 	.catch((err) => {
 		console.log('Oh no an ERROR!!' + err);
 	});
 
+redisClient.set('visits', 0);
+
 app.get('/', function (req, res) {
-	redisClient.get('numVisits', function (err, numVisits) {
-		numVisitsToDisplay = parseInt(numVisits) + 1;
-		if (isNaN(numVisitsToDisplay)) {
-			numVisitsToDisplay = 1;
-		}
-		res.send('web1: Total number of visits is: ' + numVisitsToDisplay);
-		numVisits++;
-		redisClient.set('numVisits', numVisits);
+	redisClient.get('visits', function (err, numVisits) {
+		res.send('Number of visits: ' + numVisits);
+		redisClient.set('visits', parseInt(numVisits) + 1);
 	});
 });
 

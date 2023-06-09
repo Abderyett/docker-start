@@ -1,9 +1,11 @@
-version: "3.8"
 
 services:
-  redis:
-    image: redis
-  node-app:
-    build: .
-    ports:
-      - 4001:5000
+    redis-server: 
+        image: redis
+        expose:
+            - 6379
+    node-app: 
+      restart: always
+      build: .
+      ports:
+       - 4001:5000

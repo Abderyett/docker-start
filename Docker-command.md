@@ -25,12 +25,31 @@
   * ```docker build -t abderyett/imageName:latest .``` to tag an image instead of working with id when run the image (by convention  -t docker_id/project_name:version)
 
 
-  * ``` The ordr mater inde Dockerfile```
+  * ``` The order mater inde Dockerfile```
 
   * ```docker run -p <frontend_Port>:<backend_node_port> <image_name|ID> ```  in order o allow the incoming connection from the front end to specific port inside container 
 
 
   * We use docker compose to setup connection between contqiners and skipping typing long command in docker CLI
-  
+
+  * ``` docker-compose up ``` ==> docker run myimage
+
+  * ``` docker-compose up --build``` ==> (docker build . + docker run myimage)
+
+  * ``` docker-compose up -d ``` ==> docker run containers in background
+
+  * ``` docker-compose down ``` ==> docker  to stop all runing containers 
+
+
+  ```==========================================================================================```
+
+ There is four diffrent restat policies for docker compose
+
+
+
+| "no"     | never attemp to restart this contqiner if it carshs or stops |
+| always      | if this container *stop for no reason* always attemp to restart it    |  
+| on-failure | Only restart  if container stops with an error code    |
+|unless-stopped |  always restart unless we (developers) forcibly stops it  |
 
    
