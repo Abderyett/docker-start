@@ -47,9 +47,15 @@
 
 
 
-| "no"     | never attemp to restart this contqiner if it carshs or stops |
-| always      | if this container *stop for no reason* always attemp to restart it    |  
-| on-failure | Only restart  if container stops with an error code    |
-|unless-stopped |  always restart unless we (developers) forcibly stops it  |
+|   |   |
+|---|---|
+|"no"|never attemp to restart this contqiner if it carshs or stops |
+| always  | if this container *stop for no reason* always attemp to restart it   |
+| on-failure  | Only restart  if container stops with an error code   |
+| unless-stopped   | always restart unless we (developers) forcibly stops it  |
 
+
+* when we are working on we will work with Dockerfile.dev to specify to docker build file name we use for exemple: 
+
+``` docker build -f Dockerfile .  ```
    
