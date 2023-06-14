@@ -57,5 +57,14 @@
 
 * when we are working on we will work with Dockerfile.dev to specify to docker build file name we use for exemple: 
 
-``` docker build -f Dockerfile .  ```
+``` docker build -f Dockerfile.dev .  ```
+
+
+```docker build -p 5173:5173 -v /app/node_modules -v $(pwd):/app <image id> .``` => we remplace this command with volume in docker-compose
+
+we are telling docker top map all the app folder by using (:/), we used /app/node_modules/ to tell docker that folder stay in stone don't mess with it don't try to map it up with nothin else
+
+
+
+
    
