@@ -65,4 +65,27 @@ app.get('/values/current', async (req, res) => {
 	});
 });
 
-app.listen(8080, () => console.log('Listening to port 8080 ...'));
+app.post('/values', async (req, res) => {
+	const index = req.params.index;
+
+	if (parseInt(index) > 40) {
+		res.status(422).send('Index too High!');
+	}
+	redisClient.hset('value', index, 'Nothing yet!');
+	redisPublisher.publish('insert', index);
+	pgClient.query(
+		'INSERT INTO values(number) VALUES(1$)',
+		[index],
+		(err, res) => {
+			if (err) {
+				console.error(err);
+			} else {
+				console.log('Data inserted successfully', res);
+			}
+		}
+	);
+
+	res.send('Fib is Working!');
+});
+
+app.listen(5000, () => console.log('Listening to port 5000 ...'));
