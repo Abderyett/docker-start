@@ -54,7 +54,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/values/all', async (req, res) => {
-	const values = await pgClient.query('SELECT * FROM values');
+	const values = await pgClient.query('SELECT * FROM values', (err, res) => {
+		if (err) {
+			console.error(err);
+		} else {
+			console.log(res.rows);
+		}
+	});
 
 	res.send(values.rows);
 });
