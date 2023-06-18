@@ -2,7 +2,7 @@ const { redisHost, redisPort } = require('./keys');
 
 const redis = require('redis');
 
-const rediClient = redis.createClient({
+const redisClient = redis.createClient({
 	host: redisHost,
 	port: redisPort,
 	retry_strategy: () => 1000,
@@ -16,7 +16,7 @@ function fib(index) {
 }
 
 sub.on('message', (channel, message) => {
-	rediClient.hset('values', message, fib(parseInt(message)));
+	redisClient.hset('values', message, fib(parseInt(message)));
 });
 
 sub.subscribe('insert');

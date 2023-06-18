@@ -19,9 +19,9 @@ app.use(express.json());
 
 // Postgres Client setup
 
-const { pool } = require('pg');
+const { Client } = require('pg');
 
-const pgClient = new Pool({
+const pgClient = new Client({
 	user: pgUser,
 	host: pgHost,
 	port: pgPort,
