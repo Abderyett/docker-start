@@ -1,9 +1,13 @@
 version: '3.8'
 services:
   postgres: 
-      image: postgres:latest
-  redis: redis:latest
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: postgres_password
+      POSTGRES_DB: "db"
 
+  redis: 
+    image: redis:latest
   server:
     build:
       context: ./server
@@ -11,7 +15,14 @@ services:
 
     volumes:
       - /app/node_modules
-      - .server:/app 
+      - ./server:/app 
 
-      
- 
+    environment:
+     - REDIS_HOST=redis
+     - REDIS_PORT=6379
+     - PG_USER=postgres
+     - PG_HOST=postgres
+     - PG_DATABASE=postgres
+     - PG_PASSWORD=postgres_password
+     - PG_PORT=5432
+
